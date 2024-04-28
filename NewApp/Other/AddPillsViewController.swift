@@ -11,6 +11,7 @@ class AddPillsViewController: UIViewController {
     var onMedicineAdded: ((Pill) -> Void)?
     let realm = try! Realm()
     let newPill = [Pill]()
+    var selectedIllName: String?
     lazy var nameTextField:UITextField = {
         let field = UITextField()
         field.placeholder = "Enter the name of medicine"
@@ -23,6 +24,25 @@ class AddPillsViewController: UIViewController {
         date.datePickerMode = .date
         date.preferredDatePickerStyle = .wheels
         return date
+    }()
+    lazy var badButton:BadButton = {
+        let button = BadButton()
+        button.setTitle("Лекарственные препараты и БАДы", for: .normal)
+        button.setImage(UIImage(systemName: "pills.fill"), for: .normal)
+        button.setImageSize(CGSize(width: 40, height: 40))
+        button.tintColor = .black
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.layer.cornerRadius = 8
+        button.backgroundColor = UIColor(red: 22/255, green: 137/255, blue: 72/255, alpha: 1)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.titleLabel?.numberOfLines = 0
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button.imageView!.frame.size.width, bottom: -button.imageView!.frame.size.height, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: -button.titleLabel!.frame.size.height, left: 0, bottom: 0, right: -button.titleLabel!.frame.size.width)
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
+        button.addTarget(self, action: #selector(badTap), for: .touchUpInside)
+        return button
     }()
     lazy var purchasePriceTextField:UITextField = {
         let field = UITextField()
@@ -69,6 +89,7 @@ class AddPillsViewController: UIViewController {
         view.addSubview(nameTextField)
         view.addSubview(expireDatePicker)
         view.addSubview(purchasePriceTextField)
+        view.addSubview(badButton)
         view.addSubview(noticeTextField)
         view.addSubview(firstView)
         firstView.addSubview(saveButton)
@@ -92,8 +113,14 @@ class AddPillsViewController: UIViewController {
             make.height.equalTo(60)
             make.width.equalTo(350)
         }
-        noticeTextField.snp.makeConstraints { make in
+        badButton.snp.makeConstraints { make in
             make.top.equalTo(purchasePriceTextField.snp.bottom).offset(20)
+                    make.centerX.equalToSuperview()
+                    make.height.equalTo(100)
+                    make.width.equalTo(350)
+        }
+        noticeTextField.snp.makeConstraints { make in
+            make.top.equalTo(badButton.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.height.equalTo(200)
             make.width.equalTo(350)
@@ -123,14 +150,19 @@ class AddPillsViewController: UIViewController {
         newPill.purchasePrice = purchasePriceTextField.text ?? ""
         newPill.notice = noticeTextField.text ?? ""
         newPill.iconName = "pills.circle" // Set an icon name if necessary
-        
-        try! realm.write {
-            realm.add(newPill)
+        newPill.illName = selectedIllName ?? ""
+        do{
+            try! realm.write {
+                realm.add(newPill)
+            }
+            onMedicineAdded?(newPill)
+            dismiss(animated: true, completion: nil)
+        } catch {
+            print("Error saving to Realm: \(error)")
         }
         checkFunc()
         
-        onMedicineAdded?(newPill)
-        dismiss(animated: true, completion: nil)
+        
         
     }
 }
@@ -150,5 +182,14 @@ extension AddPillsViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert,animated: true)
     }
-
+    @objc func badTap(){
+        print("badTapped")
+        let preparatsVC = PreparatsViewController()
+        preparatsVC.onSelection = { [weak self] selectedPill in
+            self?.selectedIllName = selectedPill
+        }
+        let navigationController = UINavigationController(rootViewController: preparatsVC)
+        self.present(navigationController, animated: true, completion: nil)
+    }
 }
+

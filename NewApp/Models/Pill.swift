@@ -13,4 +13,5 @@ class Pill: Object {
     @Persisted var purchasePrice: String = ""
     @Persisted var notice: String = ""
     @Persisted var iconName: String = ""
+    @Persisted var illName:String = ""
 }

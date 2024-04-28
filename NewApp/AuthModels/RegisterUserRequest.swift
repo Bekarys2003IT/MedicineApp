@@ -6,3 +6,9 @@
 //
 
 import Foundation
+struct RegisterUserRequest {
+    let userName:String
+    let email:String
+    let password:String
+}
+

@@ -38,6 +38,18 @@
 		DFEFFEA82BD0FE8B00788660 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFEA72BD0FE8B00788660 /* CustomTextField.swift */; };
 		DFEFFEAA2BD1022D00788660 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFEA92BD1022D00788660 /* CustomButton.swift */; };
 		DFEFFEAC2BD1136100788660 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFEAB2BD1136100788660 /* AlertManager.swift */; };
+		DFEFFECE2BD3A0DA00788660 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DFEFFECD2BD3A0DA00788660 /* FirebaseStorage */; };
+		DFEFFED12BD3A23100788660 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFED02BD3A23100788660 /* AuthService.swift */; };
+		DFEFFED42BD3A31300788660 /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFED32BD3A31300788660 /* RegisterUserRequest.swift */; };
+		DFEFFED62BD3AC5200788660 /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFED52BD3AC5200788660 /* LoginUserRequest.swift */; };
+		DFEFFED82BD3B7D800788660 /* ScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFED72BD3B7D800788660 /* ScreenViewController.swift */; };
+		DFEFFEDA2BD4EE5D00788660 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFED92BD4EE5D00788660 /* Validator.swift */; };
+		DFEFFEDC2BD509BE00788660 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFEDB2BD509BE00788660 /* User.swift */; };
+		DFEFFEE02BD65FDB00788660 /* PreparatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFEDF2BD65FDB00788660 /* PreparatsViewController.swift */; };
+		DFEFFEE32BD66BFD00788660 /* BadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFEE22BD66BFD00788660 /* BadButton.swift */; };
+		DFEFFF0B2BDD0E9B00788660 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFF0A2BDD0E9B00788660 /* ProfileViewController.swift */; };
+		DFEFFF0E2BDD618400788660 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFF0D2BDD618400788660 /* ProfileService.swift */; };
+		DFEFFF102BDD63E900788660 /* ProfileUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFF0F2BDD63E900788660 /* ProfileUserRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,13 +70,24 @@
 		DFEFFE0F2BCC496900788660 /* PillsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillsTableViewCell.swift; sourceTree = "<group>"; };
 		DFEFFE502BCF1E3C00788660 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		DFEFFE532BCFB6F900788660 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
-		DFEFFE942BD0548E00788660 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DFEFFE942BD0548E00788660 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFEFFEA02BD056F800788660 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		DFEFFEA22BD0571500788660 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DFEFFEA42BD05AF000788660 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		DFEFFEA72BD0FE8B00788660 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DFEFFEA92BD1022D00788660 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		DFEFFEAB2BD1136100788660 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		DFEFFED02BD3A23100788660 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		DFEFFED32BD3A31300788660 /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
+		DFEFFED52BD3AC5200788660 /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
+		DFEFFED72BD3B7D800788660 /* ScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewController.swift; sourceTree = "<group>"; };
+		DFEFFED92BD4EE5D00788660 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		DFEFFEDB2BD509BE00788660 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DFEFFEDF2BD65FDB00788660 /* PreparatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparatsViewController.swift; sourceTree = "<group>"; };
+		DFEFFEE22BD66BFD00788660 /* BadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadButton.swift; sourceTree = "<group>"; };
+		DFEFFF0A2BDD0E9B00788660 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DFEFFF0D2BDD618400788660 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		DFEFFF0F2BDD63E900788660 /* ProfileUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +98,7 @@
 				DF4202752BC7246D00ED04F5 /* SnapKit in Frameworks */,
 				DFEFFE982BD0555900788660 /* FirebaseAuth in Frameworks */,
 				DF42027C2BC724A600ED04F5 /* AlamofireDynamic in Frameworks */,
+				DFEFFECE2BD3A0DA00788660 /* FirebaseStorage in Frameworks */,
 				DF42027F2BC7254100ED04F5 /* Realm in Frameworks */,
 				DF4202812BC7254100ED04F5 /* RealmSwift in Frameworks */,
 				DFEFFE9E2BD0555900788660 /* FirebaseFirestore in Frameworks */,
@@ -106,6 +130,10 @@
 		DF42025E2BC720E500ED04F5 /* NewApp */ = {
 			isa = PBXGroup;
 			children = (
+				DFEFFF0C2BDD616C00788660 /* ProfileModel */,
+				DFEFFEE12BD66BE300788660 /* MyButton */,
+				DFEFFED22BD3A2F900788660 /* AuthModels */,
+				DFEFFECF2BD3A20C00788660 /* LoginSystem */,
 				DFEFFEA62BD0FBDE00788660 /* View */,
 				DFEFFE9F2BD056B500788660 /* Auth */,
 				DFEFFE522BCFB6E500788660 /* Extensions */,
@@ -113,11 +141,11 @@
 				DFEFFE022BCB49C300788660 /* Other */,
 				DF4202842BC72E9E00ED04F5 /* NavBar */,
 				DF42025F2BC720E500ED04F5 /* AppDelegate.swift */,
+				DFEFFECC2BD3A06200788660 /* Supporting */,
 				DF4202632BC720E500ED04F5 /* ViewController.swift */,
 				DF4202682BC720E600ED04F5 /* Assets.xcassets */,
 				DF42026D2BC720E600ED04F5 /* Info.plist */,
-				DFEFFE942BD0548E00788660 /* GoogleService-Info.plist */,
-				DFEFFEAB2BD1136100788660 /* AlertManager.swift */,
+				DFEFFED72BD3B7D800788660 /* ScreenViewController.swift */,
 			);
 			path = NewApp;
 			sourceTree = "<group>";
@@ -129,6 +157,7 @@
 				DF4202872BC72FA800ED04F5 /* MedicineViewController.swift */,
 				DF4202892BC72FC400ED04F5 /* AboutAppViewController.swift */,
 				DF42028C2BC7358000ED04F5 /* MedicineTableViewCell.swift */,
+				DFEFFF0A2BDD0E9B00788660 /* ProfileViewController.swift */,
 			);
 			path = NavBar;
 			sourceTree = "<group>";
@@ -140,6 +169,7 @@
 				DFEFFE0B2BCC32CB00788660 /* AddPillsViewController.swift */,
 				DFEFFE0D2BCC465D00788660 /* DetailViewController.swift */,
 				DFEFFE0F2BCC496900788660 /* PillsTableViewCell.swift */,
+				DFEFFEDF2BD65FDB00788660 /* PreparatsViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -149,6 +179,7 @@
 			children = (
 				DFEFFE002BCB1A1600788660 /* Medicine.swift */,
 				DFEFFE502BCF1E3C00788660 /* Pill.swift */,
+				DFEFFEDB2BD509BE00788660 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,6 +212,50 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DFEFFECC2BD3A06200788660 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				DFEFFE942BD0548E00788660 /* GoogleService-Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		DFEFFECF2BD3A20C00788660 /* LoginSystem */ = {
+			isa = PBXGroup;
+			children = (
+				DFEFFEAB2BD1136100788660 /* AlertManager.swift */,
+				DFEFFED02BD3A23100788660 /* AuthService.swift */,
+				DFEFFED92BD4EE5D00788660 /* Validator.swift */,
+			);
+			path = LoginSystem;
+			sourceTree = "<group>";
+		};
+		DFEFFED22BD3A2F900788660 /* AuthModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFEFFED32BD3A31300788660 /* RegisterUserRequest.swift */,
+				DFEFFED52BD3AC5200788660 /* LoginUserRequest.swift */,
+				DFEFFF0F2BDD63E900788660 /* ProfileUserRequest.swift */,
+			);
+			path = AuthModels;
+			sourceTree = "<group>";
+		};
+		DFEFFEE12BD66BE300788660 /* MyButton */ = {
+			isa = PBXGroup;
+			children = (
+				DFEFFEE22BD66BFD00788660 /* BadButton.swift */,
+			);
+			path = MyButton;
+			sourceTree = "<group>";
+		};
+		DFEFFF0C2BDD616C00788660 /* ProfileModel */ = {
+			isa = PBXGroup;
+			children = (
+				DFEFFF0D2BDD618400788660 /* ProfileService.swift */,
+			);
+			path = ProfileModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,6 +282,7 @@
 				DFEFFE992BD0555900788660 /* FirebaseAuthCombine-Community */,
 				DFEFFE9B2BD0555900788660 /* FirebaseCrashlytics */,
 				DFEFFE9D2BD0555900788660 /* FirebaseFirestore */,
+				DFEFFECD2BD3A0DA00788660 /* FirebaseStorage */,
 			);
 			productName = NewApp;
 			productReference = DF42025C2BC720E500ED04F5 /* NewApp.app */;
@@ -268,16 +344,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFEFFEDC2BD509BE00788660 /* User.swift in Sources */,
 				DFEFFE0E2BCC465D00788660 /* DetailViewController.swift in Sources */,
 				DFEFFEAA2BD1022D00788660 /* CustomButton.swift in Sources */,
 				DF4202642BC720E500ED04F5 /* ViewController.swift in Sources */,
 				DFEFFE082BCBF0F700788660 /* MyPillsViewController.swift in Sources */,
 				DF4202832BC7259200ED04F5 /* SignViewController.swift in Sources */,
 				DFEFFE0C2BCC32CB00788660 /* AddPillsViewController.swift in Sources */,
+				DFEFFED12BD3A23100788660 /* AuthService.swift in Sources */,
+				DFEFFED42BD3A31300788660 /* RegisterUserRequest.swift in Sources */,
 				DF42028D2BC7358000ED04F5 /* MedicineTableViewCell.swift in Sources */,
 				DF42028A2BC72FC400ED04F5 /* AboutAppViewController.swift in Sources */,
+				DFEFFED62BD3AC5200788660 /* LoginUserRequest.swift in Sources */,
 				DF4202862BC72EC200ED04F5 /* TabBarController.swift in Sources */,
+				DFEFFF0B2BDD0E9B00788660 /* ProfileViewController.swift in Sources */,
 				DFEFFEA82BD0FE8B00788660 /* CustomTextField.swift in Sources */,
+				DFEFFF0E2BDD618400788660 /* ProfileService.swift in Sources */,
 				DFEFFE102BCC496900788660 /* PillsTableViewCell.swift in Sources */,
 				DF4202882BC72FA800ED04F5 /* MedicineViewController.swift in Sources */,
 				DFEFFEAC2BD1136100788660 /* AlertManager.swift in Sources */,
@@ -285,7 +367,12 @@
 				DFEFFEA32BD0571500788660 /* RegisterViewController.swift in Sources */,
 				DFEFFEA52BD05AF000788660 /* AuthHeaderView.swift in Sources */,
 				DFEFFEA12BD056F800788660 /* ForgotPasswordViewController.swift in Sources */,
+				DFEFFF102BDD63E900788660 /* ProfileUserRequest.swift in Sources */,
+				DFEFFEE32BD66BFD00788660 /* BadButton.swift in Sources */,
+				DFEFFED82BD3B7D800788660 /* ScreenViewController.swift in Sources */,
+				DFEFFEE02BD65FDB00788660 /* PreparatsViewController.swift in Sources */,
 				DFEFFE012BCB1A1600788660 /* Medicine.swift in Sources */,
+				DFEFFEDA2BD4EE5D00788660 /* Validator.swift in Sources */,
 				DFEFFE542BCFB6F900788660 /* NavigationHelper.swift in Sources */,
 				DFEFFE512BCF1E3C00788660 /* Pill.swift in Sources */,
 			);
@@ -572,6 +659,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DFEFFE962BD0555900788660 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		DFEFFECD2BD3A0DA00788660 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFEFFE962BD0555900788660 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

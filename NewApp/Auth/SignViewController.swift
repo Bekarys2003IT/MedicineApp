@@ -92,7 +92,31 @@ class SignViewController: UIViewController {
     }
     @objc func signTap(){
         print("Tapped")
-        navigationController?.pushViewController(TabBarController(), animated: true)
+        let loginRequest = LoginUserRequest.init(
+            email: self.emailTextField.text ?? "",
+            password: self.passwordTextField.text ?? "")
+       
+        if !Validator.isValidEmail(for: loginRequest.email){
+            AlertManager.showInvalidEmailAlert(on: self)
+            return
+    }
+        if !Validator.isPasswordValid(for: loginRequest.password){
+            AlertManager.showInvalidPasswordAlert(on: self)
+            return
+    }
+        //Auth check
+        Authservice.shared.signIn(with: loginRequest) { error in
+                if let error = error {
+                    AlertManager.showSigninErrorAlert(on: self, with: error)
+                    return
+                }
+                // Assuming a successful login will update the current user
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.checkAuthentication()
+                }
+            }
+        
+
     }
     @objc func forgotTap(){
         print("forgotTapped")

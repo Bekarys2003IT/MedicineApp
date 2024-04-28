@@ -7,10 +7,13 @@
 import RealmSwift
 import UIKit
 import SnapKit
+protocol MedicineUpdateDelegate: AnyObject {
+    func didUpdatePills()
+}
 class MyPillsViewController: UIViewController {
     var pills:[Pill] = []
     var selectedMedicine: Medicine?
-    
+    weak var delegate: MedicineUpdateDelegate?
     private lazy var titleLabel:UILabel = {
         let label = UILabel()
         label.text = "Содержимое аптечки"
@@ -125,9 +128,13 @@ class MyPillsViewController: UIViewController {
                 self.pills.append(newPill)
                 self.pillsTableView.reloadData()
             }
+            delegate?.didUpdatePills()
+            NotificationCenter.default.post(name: Notification.Name("PillDataChanged"), object: nil)
             let navigationController = UINavigationController(rootViewController: addPillsVC)
             self.present(navigationController, animated: true, completion: nil)
         }
+   
+
    
 }
 extension MyPillsViewController:UITableViewDelegate,UITableViewDataSource {
@@ -170,3 +177,4 @@ extension MyPillsViewController:UITableViewDelegate,UITableViewDataSource {
     
     
 }
+

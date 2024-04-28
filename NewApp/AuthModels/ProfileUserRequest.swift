@@ -6,3 +6,18 @@
 //
 
 import Foundation
+struct ProfileUserRequest {
+    let profileName:String
+    let profileLastName:String
+    let profileEmail:String
+    let profilePhone:String
+    
+    var dictionary: [String: Any] {
+           return [
+               "profileName": profileName,
+               "profileLastName": profileLastName,
+               "profileEmail": profileEmail,
+               "profilePhone": profilePhone
+           ]
+       }
+}

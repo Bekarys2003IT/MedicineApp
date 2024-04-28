@@ -18,8 +18,10 @@ class TabBarController: UITabBarController {
     }
    private func setBars(){
         let medicineVC = self.createNav(with: "Аптечки", and:UIImage(systemName:"cross.case"), vc: MedicineViewController())
-        let profileVC = self.createNav(with: "О приложении", and: UIImage(systemName: "person"), vc: AboutAppViewController())
-        self.setViewControllers([medicineVC,profileVC], animated: true)
+        let aboutVC = self.createNav(with: "О приложении", and: UIImage(systemName: "person"), vc: AboutAppViewController())
+       let profileVC = self.createNav(with: "Профиль", and: UIImage(systemName: "person.crop.circle"), vc: ProfileViewController())
+        self.setViewControllers([medicineVC,aboutVC, profileVC], animated: true)
+       selectedIndex = 1
     }
     private func createNav(with title:String, and image:UIImage?, vc:UIViewController)->UINavigationController{
         let nav  = UINavigationController(rootViewController: vc)

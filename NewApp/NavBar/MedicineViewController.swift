@@ -10,7 +10,14 @@ import RealmSwift
 class MedicineViewController: UIViewController {
     var medicines:[Medicine] = []
     var medicamentCount = 0
-    let realm = try! Realm()
+    lazy var realm: Realm = {
+            do {
+                return try Realm()
+            } catch {
+                // Handle errors appropriately, e.g., show an alert or log to console
+                fatalError("Realm initialization error: \(error.localizedDescription)")
+            }
+        }()
     lazy var myMedicineLabel:UILabel = {
         let label = UILabel()
         label.text = "Мои аптечки"
@@ -35,7 +42,6 @@ class MedicineViewController: UIViewController {
         button.setImage(UIImage(systemName: "basket"), for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(tapFavorites), for: .touchUpInside)
         return button
     }()
     lazy var sometableView:UITableView = {
@@ -69,7 +75,9 @@ class MedicineViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         print(Realm.Configuration.defaultConfiguration.fileURL)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadMedicineData), name: Notification.Name("PillDataChanged"), object: nil)
         setUI()
+        didLoad()
     }
     private func setUI(){
         view.addSubview(myMedicineLabel)
@@ -131,16 +139,23 @@ class MedicineViewController: UIViewController {
             realm.add(newMedicine)
         }
         medicamentCount += 1
+        didLoad()
+    }
+    @objc func reloadMedicineData() {
         loadMedicines()
     }
-    
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    private func didLoad(){
+        loadMedicines()
+        medicineCountLabel.text = "Аптечек: \(medicines.count)"
+    }
     private func loadMedicines() {
         let realm = try! Realm()
-        medicines = Array(realm.objects(Medicine.self))  // Load all medicines
-        sometableView.reloadData()
-    }
-    @objc func tapFavorites(){
-        print("Favorites tapped")
+        self.medicines = Array(realm.objects(Medicine.self))  // Load all medicines
+        self.sometableView.reloadData()
     }
     
 
@@ -157,7 +172,7 @@ extension MedicineViewController: UITableViewDelegate,UITableViewDataSource {
         guard let cell = sometableView.dequeueReusableCell(withIdentifier: "MedicineTableViewCell", for: indexPath) as? MedicineTableViewCell else { return UITableViewCell() }
            let medicine = medicines[indexPath.row]
            cell.typeLabel.text = medicine.type
-           cell.medicamentLabel.text = "Медикаменты: \(medicine.medicament)"
+           cell.medicamentLabel.text = "Медикаменты: \(medicine.pills.count)"
            cell.iconView.image = UIImage(systemName: medicine.iconName)
            cell.backgroundColor = UIColor(red: 154/255, green: 254/255, blue: 128/255, alpha: 1)
            return cell
@@ -166,6 +181,7 @@ extension MedicineViewController: UITableViewDelegate,UITableViewDataSource {
         let selectedMedicine = medicines[indexPath.row]
         let pillsViewController = MyPillsViewController()
         pillsViewController.selectedMedicine = selectedMedicine
+        pillsViewController.delegate = self
         navigationController?.pushViewController(pillsViewController, animated: true)
     }
     //delete
@@ -186,5 +202,10 @@ extension MedicineViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     
+}
+extension MedicineViewController: MedicineUpdateDelegate{
+    func didUpdatePills() {
+           loadMedicines()
+       }
 }
 
