@@ -36,22 +36,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         checkAuthentication()
         let config = Realm.Configuration(
-                    schemaVersion: 1,
-                    migrationBlock: { migration, oldSchemaVersion in
-
-                        if (oldSchemaVersion < 1) {
-                            // Nothing to do!
-                            // Realm will automatically detect new properties and removed properties
-                            // And will update the schema on disk automatically
+                schemaVersion: 3, // Ensure this matches the highest schema version used
+                migrationBlock: { migration, oldSchemaVersion in
+                    // Update migrations here if needed
+                    if oldSchemaVersion < 2 {
+                        // Example migration logic for schema version 2
+                        migration.enumerateObjects(ofType: Medicine.className()) { oldObject, newObject in
+                            // Initialize any new properties or handle data migration
                         }
-                    })
+                    }
+                }
+            )
 
-                // Tell Realm to use this new configuration object for the default Realm
-                Realm.Configuration.defaultConfiguration = config
+            // Set this as the default configuration
+            Realm.Configuration.defaultConfiguration = config
 
-                // Now that we've told Realm how to handle the schema change, opening the file
-                // will automatically perform the migration
-                let realm = try! Realm()
+            // Now access Realm to trigger the migration
+            let realm = try! Realm()
 
                 return true
     }

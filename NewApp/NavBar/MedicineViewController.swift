@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
 import RealmSwift
+import FirebaseCore
 class MedicineViewController: UIViewController {
     var medicines:[Medicine] = []
     var medicamentCount = 0
+    let firestore = Firestore.firestore()
     lazy var realm: Realm = {
             do {
                 return try Realm()
@@ -76,6 +79,7 @@ class MedicineViewController: UIViewController {
         view.backgroundColor = .white
         print(Realm.Configuration.defaultConfiguration.fileURL)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadMedicineData), name: Notification.Name("PillDataChanged"), object: nil)
+        FirebaseConfiguration.shared.setLoggerLevel(.debug)
         setUI()
         didLoad()
     }
@@ -138,9 +142,61 @@ class MedicineViewController: UIViewController {
         try! realm.write {
             realm.add(newMedicine)
         }
+        
+        // Save to Firestore
+//        let medicineRequest = MedicineUserRequest(
+//                type: newMedicine.type,
+//                medicament: newMedicine.medicament,
+//                pills: [] // Assuming an empty list initially for this example
+//            )
+//        let medicineUID = UUID().uuidString
+//        MedicineService.shared.saveMedicineData(with: medicineRequest, uid: medicineUID) { error in
+//               if let error = error {
+//                   print("Error saving to Firestore: \(error)")
+//               } else {
+//                   print("Document successfully written!")
+//               }
+//           }
+        let newFirebaseMedicine = FirebaseMedicine(
+                type: "Домашняя",
+                medicament: "\(medicamentCount)",
+                iconName: "cross.case.fill",
+                pills: []  
+            )
+        if let firebaseMedicine = convertToFirebaseMedicine(realmMedicine: newMedicine) {
+              MedicineService.shared.saveMedicineData(medicine: firebaseMedicine) { error in
+                  if let error = error {
+                      print("Error saving to Firestore: \(error)")
+                  } else {
+                      print("Document successfully written!")
+                  }
+              }
+          }
         medicamentCount += 1
         didLoad()
     }
+    func convertToFirebaseMedicine(realmMedicine: Medicine?) -> FirebaseMedicine? {
+            guard let realmMedicine = realmMedicine else { return nil }
+            let firebasePills = realmMedicine.pills.map { pill -> FirebasePill in
+                FirebasePill(
+                    name: pill.name,
+                    expireDate: pill.expireDate,
+                    purchasePrice: pill.purchasePrice,
+                    notice: pill.notice,
+                    iconName: pill.iconName,
+                    illName: pill.illName
+                )
+            }
+            // Convert LazyMapSequence to Array
+            return FirebaseMedicine(
+                type: realmMedicine.type,
+                medicament: realmMedicine.medicament,
+                iconName: realmMedicine.iconName,
+                pills: Array(firebasePills)
+            )
+        }
+
+        // ... rest of yo
     @objc func reloadMedicineData() {
         loadMedicines()
     }
@@ -193,11 +249,19 @@ extension MedicineViewController: UITableViewDelegate,UITableViewDataSource {
         if editingStyle == .delete {
             let medicineToDelete = medicines[indexPath.row]
             let realm = try! Realm()
-            try! realm.write {
-                realm.delete(medicineToDelete)
+            do{
+                try! realm.write {
+                    realm.delete(medicineToDelete)
+                }
+            } catch {
+                print("Error deleting from Realm: \(error)")
+                return
             }
+            
             medicines.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            
         }
     }
     
@@ -208,4 +272,3 @@ extension MedicineViewController: MedicineUpdateDelegate{
            loadMedicines()
        }
 }
-

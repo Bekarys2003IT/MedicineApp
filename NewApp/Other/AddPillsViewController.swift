@@ -7,17 +7,27 @@
 
 import UIKit
 import RealmSwift
+import FirebaseFirestore
 class AddPillsViewController: UIViewController {
     var onMedicineAdded: ((Pill) -> Void)?
     let realm = try! Realm()
+    var selectedMedicine: Medicine?
     let newPill = [Pill]()
     var selectedIllName: String?
+    
     lazy var nameTextField:UITextField = {
         let field = UITextField()
         field.placeholder = "Enter the name of medicine"
         field.borderStyle = .roundedRect
         field.layer.borderColor = UIColor.black.cgColor
         return field
+    }()
+    lazy var expireLabel:UILabel = {
+       let label = UILabel()
+        label.text = "Expire Date:"
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 16,weight: .bold)
+        return label
     }()
     lazy var expireDatePicker:UIDatePicker = {
         let date = UIDatePicker()
@@ -54,7 +64,6 @@ class AddPillsViewController: UIViewController {
     lazy var noticeTextField:UITextField = {
         let field = UITextField()
         field.placeholder = "Notice of pills"
-        field.keyboardType = .decimalPad
         field.borderStyle = .roundedRect
         field.layer.borderColor = UIColor.black.cgColor
         return field
@@ -87,6 +96,7 @@ class AddPillsViewController: UIViewController {
     }
     private func setUI(){
         view.addSubview(nameTextField)
+        view.addSubview(expireLabel)
         view.addSubview(expireDatePicker)
         view.addSubview(purchasePriceTextField)
         view.addSubview(badButton)
@@ -96,13 +106,17 @@ class AddPillsViewController: UIViewController {
         
         //constraint
         nameTextField.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.centerX.equalToSuperview()
             make.height.equalTo(60)
             make.width.equalTo(350)
         }
+        expireLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameTextField.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(25)
+        }
         expireDatePicker.snp.makeConstraints { make in
-            make.top.equalTo(nameTextField.snp.bottom).offset(20)
+            make.top.equalTo(expireLabel.snp.bottom)
             make.centerX.equalToSuperview()
             make.height.equalTo(60)
             make.width.equalTo(350)
@@ -142,28 +156,58 @@ class AddPillsViewController: UIViewController {
     
     // When saving the new medicine, call this closure
     @objc func saveMedicine() {
-        let realm = try! Realm()  // Ideally, handle errors with do-catch
-        
-        let newPill = Pill()
-        newPill.name = nameTextField.text ?? ""
-        newPill.expireDate = expireDatePicker.date
-        newPill.purchasePrice = purchasePriceTextField.text ?? ""
-        newPill.notice = noticeTextField.text ?? ""
-        newPill.iconName = "pills.circle" // Set an icon name if necessary
-        newPill.illName = selectedIllName ?? ""
-        do{
-            try! realm.write {
-                realm.add(newPill)
+        DispatchQueue.main.async {
+            let realm = try! Realm()  // Ideally, handle errors with do-catch
+            
+            let newPill = Pill()
+            newPill.name = self.nameTextField.text ?? ""
+            newPill.expireDate = self.expireDatePicker.date
+            newPill.purchasePrice = self.purchasePriceTextField.text ?? ""
+            newPill.notice = self.noticeTextField.text ?? ""
+            newPill.iconName = "pills.circle" // Set an icon name if necessary
+            newPill.illName = self.selectedIllName ?? ""
+            do{
+                try! realm.write {
+                    realm.add(newPill)
+                    self.selectedMedicine?.pills.append(newPill)
+                }
+                self.onMedicineAdded?(newPill)
+                self.alertFunc()
+            } catch {
+                print("Error saving to Realm: \(error)")
             }
-            onMedicineAdded?(newPill)
-            dismiss(animated: true, completion: nil)
-        } catch {
-            print("Error saving to Realm: \(error)")
+            guard let medicine = self.selectedMedicine else { return }
+            let firebaseMedicine = FirebaseMedicine(
+                id: medicine.id, // Ensure this is consistent with Firestore
+                type: medicine.type,
+                medicament: medicine.medicament,
+                iconName: medicine.iconName,
+                pills: medicine.pills.map { FirebasePill(name: $0.name, expireDate: $0.expireDate, purchasePrice: $0.purchasePrice, notice: $0.notice, iconName: $0.iconName, illName: $0.illName) }
+            )
+            self.updateFirestoreWithNewPill(newPill: newPill, forMedicine: firebaseMedicine)
+            
         }
-        checkFunc()
-        
-        
-        
+    }
+    func updateFirestoreWithNewPill(newPill: Pill, forMedicine medicine: FirebaseMedicine) {
+        let pillData: [String: Any] = [
+            "name": newPill.name,
+            "expireDate": Timestamp(date: newPill.expireDate),
+            "purchasePrice": newPill.purchasePrice,
+            "notice": newPill.notice,
+            "iconName": newPill.iconName,
+            "illName": newPill.illName
+        ]
+
+        let db = Firestore.firestore()
+        db.collection("medicines").document(medicine.id).setData([
+            "pills": FieldValue.arrayUnion([pillData])
+        ], merge: true) { error in
+            if let error = error {
+                print("Error saving to Firestore: \(error)")
+            } else {
+                print("Pill added successfully to Firestore")
+            }
+        }
     }
 }
 extension AddPillsViewController {
@@ -190,6 +234,15 @@ extension AddPillsViewController {
         }
         let navigationController = UINavigationController(rootViewController: preparatsVC)
         self.present(navigationController, animated: true, completion: nil)
+    }
+    private func alertFunc(){
+        let alertExpire = UIAlertController(title: "Expire date", message: "Your expire date is until \(expireDatePicker.date)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+            self!.checkFunc()
+            self?.dismiss(animated: true, completion: nil)
+        }
+        alertExpire.addAction(okAction)
+        self.present(alertExpire, animated: true, completion: nil)
     }
 }
 

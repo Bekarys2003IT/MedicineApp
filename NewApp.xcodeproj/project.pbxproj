@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF1B0DD52BFB112000EDFC1A /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B0DD42BFB112000EDFC1A /* PermissionViewController.swift */; };
+		DF1B0DD72BFB120400EDFC1A /* PermissionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B0DD62BFB120400EDFC1A /* PermissionRequest.swift */; };
+		DF1B0DD92BFB126500EDFC1A /* PermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B0DD82BFB126500EDFC1A /* PermissionService.swift */; };
+		DF1B0DDB2BFB254D00EDFC1A /* UserMedicinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B0DDA2BFB254D00EDFC1A /* UserMedicinesViewController.swift */; };
+		DF1B0DDE2BFB27CE00EDFC1A /* UserPillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B0DDD2BFB27CE00EDFC1A /* UserPillsViewController.swift */; };
 		DF4202602BC720E500ED04F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF42025F2BC720E500ED04F5 /* AppDelegate.swift */; };
 		DF4202642BC720E500ED04F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4202632BC720E500ED04F5 /* ViewController.swift */; };
 		DF4202692BC720E600ED04F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF4202682BC720E600ED04F5 /* Assets.xcassets */; };
@@ -20,6 +25,25 @@
 		DF4202882BC72FA800ED04F5 /* MedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4202872BC72FA800ED04F5 /* MedicineViewController.swift */; };
 		DF42028A2BC72FC400ED04F5 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4202892BC72FC400ED04F5 /* AboutAppViewController.swift */; };
 		DF42028D2BC7358000ED04F5 /* MedicineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF42028C2BC7358000ED04F5 /* MedicineTableViewCell.swift */; };
+		DF57D1C82BE2708600D1F073 /* InformationDrugsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1C72BE2708600D1F073 /* InformationDrugsViewController.swift */; };
+		DF57D1CA2BE27A4F00D1F073 /* InfoDrug.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1C92BE27A4F00D1F073 /* InfoDrug.swift */; };
+		DF57D1CC2BE27B1C00D1F073 /* DrugsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1CB2BE27B1C00D1F073 /* DrugsViewController.swift */; };
+		DF57D1CE2BE8DC7800D1F073 /* APIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1CD2BE8DC7800D1F073 /* APIViewController.swift */; };
+		DF57D1D02BE8ECA800D1F073 /* SafetyReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1CF2BE8ECA800D1F073 /* SafetyReport.swift */; };
+		DF57D1D32BE8ECF700D1F073 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1D22BE8ECF700D1F073 /* NetworkManager.swift */; };
+		DF57D1D52BE9210600D1F073 /* MedicineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1D42BE9210600D1F073 /* MedicineService.swift */; };
+		DF57D1D72BE9260400D1F073 /* MedicineUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1D62BE9260300D1F073 /* MedicineUserRequest.swift */; };
+		DF57D1DA2BECBDC100D1F073 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DF57D1D92BECBDC100D1F073 /* FirebaseMessaging */; };
+		DF57D1DD2BECC9AD00D1F073 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF57D1DC2BECC9AD00D1F073 /* UserNotifications.framework */; };
+		DF57D1DF2BECC9BC00D1F073 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF57D1DE2BECC9BC00D1F073 /* AdSupport.framework */; };
+		DF57D1E12BECC9C600D1F073 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF57D1E02BECC9C600D1F073 /* iAd.framework */; };
+		DF57D1E32BECC9CE00D1F073 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF57D1E22BECC9CE00D1F073 /* Security.framework */; };
+		DF57D1E52BEDF91900D1F073 /* GraphicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1E42BEDF91900D1F073 /* GraphicViewController.swift */; };
+		DF57D1E72BEE000500D1F073 /* GraphSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1E62BEE000500D1F073 /* GraphSwiftUI.swift */; };
+		DF57D1E92BEE035400D1F073 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF57D1E82BEE035400D1F073 /* Charts.framework */; };
+		DF57D1EC2BEE136500D1F073 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = DF57D1EB2BEE136500D1F073 /* DGCharts */; };
+		DF57D1EE2BEE136500D1F073 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = DF57D1ED2BEE136500D1F073 /* DGChartsDynamic */; };
+		DF57D1F02BEF384100D1F073 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57D1EF2BEF384100D1F073 /* FirebaseModel.swift */; };
 		DFEFFE012BCB1A1600788660 /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFE002BCB1A1600788660 /* Medicine.swift */; };
 		DFEFFE082BCBF0F700788660 /* MyPillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFE072BCBF0F700788660 /* MyPillsViewController.swift */; };
 		DFEFFE0C2BCC32CB00788660 /* AddPillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEFFE0B2BCC32CB00788660 /* AddPillsViewController.swift */; };
@@ -53,6 +77,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF1B0DD42BFB112000EDFC1A /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
+		DF1B0DD62BFB120400EDFC1A /* PermissionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRequest.swift; sourceTree = "<group>"; };
+		DF1B0DD82BFB126500EDFC1A /* PermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionService.swift; sourceTree = "<group>"; };
+		DF1B0DDA2BFB254D00EDFC1A /* UserMedicinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMedicinesViewController.swift; sourceTree = "<group>"; };
+		DF1B0DDD2BFB27CE00EDFC1A /* UserPillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPillsViewController.swift; sourceTree = "<group>"; };
 		DF42025C2BC720E500ED04F5 /* NewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF42025F2BC720E500ED04F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF4202632BC720E500ED04F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +92,23 @@
 		DF4202872BC72FA800ED04F5 /* MedicineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineViewController.swift; sourceTree = "<group>"; };
 		DF4202892BC72FC400ED04F5 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		DF42028C2BC7358000ED04F5 /* MedicineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineTableViewCell.swift; sourceTree = "<group>"; };
+		DF57D1C72BE2708600D1F073 /* InformationDrugsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationDrugsViewController.swift; sourceTree = "<group>"; };
+		DF57D1C92BE27A4F00D1F073 /* InfoDrug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDrug.swift; sourceTree = "<group>"; };
+		DF57D1CB2BE27B1C00D1F073 /* DrugsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugsViewController.swift; sourceTree = "<group>"; };
+		DF57D1CD2BE8DC7800D1F073 /* APIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewController.swift; sourceTree = "<group>"; };
+		DF57D1CF2BE8ECA800D1F073 /* SafetyReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyReport.swift; sourceTree = "<group>"; };
+		DF57D1D22BE8ECF700D1F073 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DF57D1D42BE9210600D1F073 /* MedicineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineService.swift; sourceTree = "<group>"; };
+		DF57D1D62BE9260300D1F073 /* MedicineUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineUserRequest.swift; sourceTree = "<group>"; };
+		DF57D1DB2BECBE2000D1F073 /* NewApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewApp.entitlements; sourceTree = "<group>"; };
+		DF57D1DC2BECC9AD00D1F073 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		DF57D1DE2BECC9BC00D1F073 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		DF57D1E02BECC9C600D1F073 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		DF57D1E22BECC9CE00D1F073 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DF57D1E42BEDF91900D1F073 /* GraphicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicViewController.swift; sourceTree = "<group>"; };
+		DF57D1E62BEE000500D1F073 /* GraphSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphSwiftUI.swift; sourceTree = "<group>"; };
+		DF57D1E82BEE035400D1F073 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = System/Library/Frameworks/Charts.framework; sourceTree = SDKROOT; };
+		DF57D1EF2BEF384100D1F073 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
 		DFEFFE002BCB1A1600788660 /* Medicine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medicine.swift; sourceTree = "<group>"; };
 		DFEFFE072BCBF0F700788660 /* MyPillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPillsViewController.swift; sourceTree = "<group>"; };
 		DFEFFE0B2BCC32CB00788660 /* AddPillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPillsViewController.swift; sourceTree = "<group>"; };
@@ -96,14 +142,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF4202752BC7246D00ED04F5 /* SnapKit in Frameworks */,
+				DF57D1E92BEE035400D1F073 /* Charts.framework in Frameworks */,
+				DF57D1E32BECC9CE00D1F073 /* Security.framework in Frameworks */,
 				DFEFFE982BD0555900788660 /* FirebaseAuth in Frameworks */,
 				DF42027C2BC724A600ED04F5 /* AlamofireDynamic in Frameworks */,
+				DF57D1E12BECC9C600D1F073 /* iAd.framework in Frameworks */,
 				DFEFFECE2BD3A0DA00788660 /* FirebaseStorage in Frameworks */,
 				DF42027F2BC7254100ED04F5 /* Realm in Frameworks */,
 				DF4202812BC7254100ED04F5 /* RealmSwift in Frameworks */,
+				DF57D1DF2BECC9BC00D1F073 /* AdSupport.framework in Frameworks */,
 				DFEFFE9E2BD0555900788660 /* FirebaseFirestore in Frameworks */,
+				DF57D1EC2BEE136500D1F073 /* DGCharts in Frameworks */,
 				DFEFFE9C2BD0555900788660 /* FirebaseCrashlytics in Frameworks */,
+				DF57D1DD2BECC9AD00D1F073 /* UserNotifications.framework in Frameworks */,
 				DFEFFE9A2BD0555900788660 /* FirebaseAuthCombine-Community in Frameworks */,
+				DF57D1DA2BECBDC100D1F073 /* FirebaseMessaging in Frameworks */,
+				DF57D1EE2BEE136500D1F073 /* DGChartsDynamic in Frameworks */,
 				DF42027A2BC724A600ED04F5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,11 +165,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF1B0DDC2BFB25FA00EDFC1A /* GivenUser */ = {
+			isa = PBXGroup;
+			children = (
+				DF1B0DDA2BFB254D00EDFC1A /* UserMedicinesViewController.swift */,
+				DF1B0DDD2BFB27CE00EDFC1A /* UserPillsViewController.swift */,
+			);
+			path = GivenUser;
+			sourceTree = "<group>";
+		};
 		DF4202532BC720E500ED04F5 = {
 			isa = PBXGroup;
 			children = (
 				DF42025E2BC720E500ED04F5 /* NewApp */,
 				DF42025D2BC720E500ED04F5 /* Products */,
+				DF57D1D82BECBDC100D1F073 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +194,7 @@
 		DF42025E2BC720E500ED04F5 /* NewApp */ = {
 			isa = PBXGroup;
 			children = (
+				DF57D1DB2BECBE2000D1F073 /* NewApp.entitlements */,
 				DFEFFF0C2BDD616C00788660 /* ProfileModel */,
 				DFEFFEE12BD66BE300788660 /* MyButton */,
 				DFEFFED22BD3A2F900788660 /* AuthModels */,
@@ -154,12 +219,40 @@
 			isa = PBXGroup;
 			children = (
 				DF4202852BC72EC200ED04F5 /* TabBarController.swift */,
+				DF57D1C72BE2708600D1F073 /* InformationDrugsViewController.swift */,
 				DF4202872BC72FA800ED04F5 /* MedicineViewController.swift */,
 				DF4202892BC72FC400ED04F5 /* AboutAppViewController.swift */,
 				DF42028C2BC7358000ED04F5 /* MedicineTableViewCell.swift */,
 				DFEFFF0A2BDD0E9B00788660 /* ProfileViewController.swift */,
+				DF57D1CB2BE27B1C00D1F073 /* DrugsViewController.swift */,
+				DF57D1E42BEDF91900D1F073 /* GraphicViewController.swift */,
+				DF57D1CD2BE8DC7800D1F073 /* APIViewController.swift */,
+				DF1B0DD42BFB112000EDFC1A /* PermissionViewController.swift */,
+				DF57D1D12BE8ECCF00D1F073 /* Api */,
+				DF57D1E62BEE000500D1F073 /* GraphSwiftUI.swift */,
+				DF1B0DDC2BFB25FA00EDFC1A /* GivenUser */,
 			);
 			path = NavBar;
+			sourceTree = "<group>";
+		};
+		DF57D1D12BE8ECCF00D1F073 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				DF57D1D22BE8ECF700D1F073 /* NetworkManager.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		DF57D1D82BECBDC100D1F073 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF57D1E82BEE035400D1F073 /* Charts.framework */,
+				DF57D1E22BECC9CE00D1F073 /* Security.framework */,
+				DF57D1E02BECC9C600D1F073 /* iAd.framework */,
+				DF57D1DE2BECC9BC00D1F073 /* AdSupport.framework */,
+				DF57D1DC2BECC9AD00D1F073 /* UserNotifications.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DFEFFE022BCB49C300788660 /* Other */ = {
@@ -180,6 +273,9 @@
 				DFEFFE002BCB1A1600788660 /* Medicine.swift */,
 				DFEFFE502BCF1E3C00788660 /* Pill.swift */,
 				DFEFFEDB2BD509BE00788660 /* User.swift */,
+				DF57D1C92BE27A4F00D1F073 /* InfoDrug.swift */,
+				DF57D1CF2BE8ECA800D1F073 /* SafetyReport.swift */,
+				DF57D1EF2BEF384100D1F073 /* FirebaseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +322,7 @@
 				DFEFFEAB2BD1136100788660 /* AlertManager.swift */,
 				DFEFFED02BD3A23100788660 /* AuthService.swift */,
 				DFEFFED92BD4EE5D00788660 /* Validator.swift */,
+				DF1B0DD82BFB126500EDFC1A /* PermissionService.swift */,
 			);
 			path = LoginSystem;
 			sourceTree = "<group>";
@@ -236,6 +333,8 @@
 				DFEFFED32BD3A31300788660 /* RegisterUserRequest.swift */,
 				DFEFFED52BD3AC5200788660 /* LoginUserRequest.swift */,
 				DFEFFF0F2BDD63E900788660 /* ProfileUserRequest.swift */,
+				DF57D1D62BE9260300D1F073 /* MedicineUserRequest.swift */,
+				DF1B0DD62BFB120400EDFC1A /* PermissionRequest.swift */,
 			);
 			path = AuthModels;
 			sourceTree = "<group>";
@@ -252,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				DFEFFF0D2BDD618400788660 /* ProfileService.swift */,
+				DF57D1D42BE9210600D1F073 /* MedicineService.swift */,
 			);
 			path = ProfileModel;
 			sourceTree = "<group>";
@@ -283,6 +383,9 @@
 				DFEFFE9B2BD0555900788660 /* FirebaseCrashlytics */,
 				DFEFFE9D2BD0555900788660 /* FirebaseFirestore */,
 				DFEFFECD2BD3A0DA00788660 /* FirebaseStorage */,
+				DF57D1D92BECBDC100D1F073 /* FirebaseMessaging */,
+				DF57D1EB2BEE136500D1F073 /* DGCharts */,
+				DF57D1ED2BEE136500D1F073 /* DGChartsDynamic */,
 			);
 			productName = NewApp;
 			productReference = DF42025C2BC720E500ED04F5 /* NewApp.app */;
@@ -317,6 +420,7 @@
 				DF4202782BC724A600ED04F5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				DF42027D2BC7254100ED04F5 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				DFEFFE962BD0555900788660 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DF57D1EA2BEE136500D1F073 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = DF42025D2BC720E500ED04F5 /* Products */;
 			projectDirPath = "";
@@ -346,29 +450,45 @@
 			files = (
 				DFEFFEDC2BD509BE00788660 /* User.swift in Sources */,
 				DFEFFE0E2BCC465D00788660 /* DetailViewController.swift in Sources */,
+				DF57D1CE2BE8DC7800D1F073 /* APIViewController.swift in Sources */,
 				DFEFFEAA2BD1022D00788660 /* CustomButton.swift in Sources */,
+				DF1B0DDE2BFB27CE00EDFC1A /* UserPillsViewController.swift in Sources */,
 				DF4202642BC720E500ED04F5 /* ViewController.swift in Sources */,
 				DFEFFE082BCBF0F700788660 /* MyPillsViewController.swift in Sources */,
+				DF57D1F02BEF384100D1F073 /* FirebaseModel.swift in Sources */,
 				DF4202832BC7259200ED04F5 /* SignViewController.swift in Sources */,
+				DF1B0DD92BFB126500EDFC1A /* PermissionService.swift in Sources */,
+				DF57D1D72BE9260400D1F073 /* MedicineUserRequest.swift in Sources */,
 				DFEFFE0C2BCC32CB00788660 /* AddPillsViewController.swift in Sources */,
+				DF57D1CA2BE27A4F00D1F073 /* InfoDrug.swift in Sources */,
+				DF57D1D02BE8ECA800D1F073 /* SafetyReport.swift in Sources */,
+				DF1B0DD72BFB120400EDFC1A /* PermissionRequest.swift in Sources */,
 				DFEFFED12BD3A23100788660 /* AuthService.swift in Sources */,
+				DF1B0DDB2BFB254D00EDFC1A /* UserMedicinesViewController.swift in Sources */,
 				DFEFFED42BD3A31300788660 /* RegisterUserRequest.swift in Sources */,
+				DF57D1CC2BE27B1C00D1F073 /* DrugsViewController.swift in Sources */,
 				DF42028D2BC7358000ED04F5 /* MedicineTableViewCell.swift in Sources */,
 				DF42028A2BC72FC400ED04F5 /* AboutAppViewController.swift in Sources */,
 				DFEFFED62BD3AC5200788660 /* LoginUserRequest.swift in Sources */,
 				DF4202862BC72EC200ED04F5 /* TabBarController.swift in Sources */,
 				DFEFFF0B2BDD0E9B00788660 /* ProfileViewController.swift in Sources */,
 				DFEFFEA82BD0FE8B00788660 /* CustomTextField.swift in Sources */,
+				DF57D1D32BE8ECF700D1F073 /* NetworkManager.swift in Sources */,
 				DFEFFF0E2BDD618400788660 /* ProfileService.swift in Sources */,
 				DFEFFE102BCC496900788660 /* PillsTableViewCell.swift in Sources */,
 				DF4202882BC72FA800ED04F5 /* MedicineViewController.swift in Sources */,
 				DFEFFEAC2BD1136100788660 /* AlertManager.swift in Sources */,
 				DF4202602BC720E500ED04F5 /* AppDelegate.swift in Sources */,
+				DF57D1D52BE9210600D1F073 /* MedicineService.swift in Sources */,
+				DF57D1E52BEDF91900D1F073 /* GraphicViewController.swift in Sources */,
 				DFEFFEA32BD0571500788660 /* RegisterViewController.swift in Sources */,
 				DFEFFEA52BD05AF000788660 /* AuthHeaderView.swift in Sources */,
 				DFEFFEA12BD056F800788660 /* ForgotPasswordViewController.swift in Sources */,
 				DFEFFF102BDD63E900788660 /* ProfileUserRequest.swift in Sources */,
 				DFEFFEE32BD66BFD00788660 /* BadButton.swift in Sources */,
+				DF1B0DD52BFB112000EDFC1A /* PermissionViewController.swift in Sources */,
+				DF57D1E72BEE000500D1F073 /* GraphSwiftUI.swift in Sources */,
+				DF57D1C82BE2708600D1F073 /* InformationDrugsViewController.swift in Sources */,
 				DFEFFED82BD3B7D800788660 /* ScreenViewController.swift in Sources */,
 				DFEFFEE02BD65FDB00788660 /* PreparatsViewController.swift in Sources */,
 				DFEFFE012BCB1A1600788660 /* Medicine.swift in Sources */,
@@ -505,6 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NewApp/NewApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 675L5G2V4N;
@@ -515,6 +636,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,6 +655,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NewApp/NewApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 675L5G2V4N;
@@ -543,6 +666,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -604,6 +728,14 @@
 				kind = branch;
 			};
 		};
+		DF57D1EA2BEE136500D1F073 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 		DFEFFE962BD0555900788660 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -639,6 +771,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DF42027D2BC7254100ED04F5 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		DF57D1D92BECBDC100D1F073 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFEFFE962BD0555900788660 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		DF57D1EB2BEE136500D1F073 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF57D1EA2BEE136500D1F073 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		DF57D1ED2BEE136500D1F073 /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF57D1EA2BEE136500D1F073 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
 		};
 		DFEFFE972BD0555900788660 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -28,9 +28,11 @@ class ProfileService {
             let data = document.data()
             let profile = ProfileUserRequest(
                 profileName: data?["profileName"] as? String ?? "",
-                profileLastName: data?["profileLastName"] as? String ?? "",
-                profileEmail: data?["profileEmail"] as? String ?? "",
-                profilePhone: data?["profilePhone"] as? String ?? ""
+                profileDiagnose: data?["profileDiagnose"] as? String ?? "",
+                profileHeight: data?["profileHeight"] as? String ?? "",
+                profileWeight: data?["profileWeight"] as? String ?? "",
+                profileDiet: data?["profileDiet"] as? String ?? "",
+                profileScheme: data?["profileScheme"] as? String ?? ""
             )
             completion(profile, nil)
         }

@@ -19,33 +19,49 @@ class ProfileViewController: UIViewController {
     }()
     private lazy var nameProfileTextField:UITextField = {
        let textField = UITextField()
-        textField.placeholder = "Enter your name"
+        textField.placeholder = "Enter your full name"
         textField.layer.cornerRadius = 8
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         return textField
     }()
-    private lazy var lastnameProfileTextField:UITextField = {
+    private lazy var diagnoseProfileTextField:UITextField = {
        let textField = UITextField()
-        textField.placeholder = "Enter your lastname"
+        textField.placeholder = "Diagnose of doctor"
         textField.layer.cornerRadius = 8
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         return textField
     }()
-    private lazy var emailProfileTextField:UITextField = {
+    private lazy var heightProfileTextField:UITextField = {
        let textField = UITextField()
-        textField.placeholder = "Enter your email"
+        textField.placeholder = "Enter your height"
         textField.layer.cornerRadius = 8
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         return textField
     }()
-    private lazy var phoneProfileTextField:UITextField = {
+    private lazy var weightProfileTextField:UITextField = {
        let textField = UITextField()
-        textField.placeholder = "Enter your phone number"
+        textField.placeholder = "Enter your weight"
         textField.layer.cornerRadius = 8
         textField.keyboardType = .numberPad
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        return textField
+    }()
+    private lazy var dietProfileTextField:UITextField = {
+       let textField = UITextField()
+        textField.placeholder = "Diet"
+        textField.layer.cornerRadius = 8
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        return textField
+    }()
+    private lazy var schemeProfileTextField:UITextField = {
+       let textField = UITextField()
+        textField.placeholder = "Scheme of taking pills"
+        textField.layer.cornerRadius = 8
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         return textField
@@ -68,9 +84,11 @@ class ProfileViewController: UIViewController {
     private func setUI(){
         view.addSubview(appNameLabel)
         view.addSubview(nameProfileTextField)
-        view.addSubview(lastnameProfileTextField)
-        view.addSubview(emailProfileTextField)
-        view.addSubview(phoneProfileTextField)
+        view.addSubview(diagnoseProfileTextField)
+        view.addSubview(heightProfileTextField)
+        view.addSubview(weightProfileTextField)
+        view.addSubview(dietProfileTextField)
+        view.addSubview(schemeProfileTextField)
         view.addSubview(profileSaveButton)
         //constraint
         appNameLabel.snp.makeConstraints { make in
@@ -82,23 +100,33 @@ class ProfileViewController: UIViewController {
             make.trailing.leading.equalToSuperview().inset(40)
             make.height.equalTo(40)
         }
-        lastnameProfileTextField.snp.makeConstraints { make in
+        diagnoseProfileTextField.snp.makeConstraints { make in
             make.top.equalTo(nameProfileTextField.snp.bottom).offset(20)
             make.trailing.leading.equalToSuperview().inset(40)
             make.height.equalTo(40)
         }
-        emailProfileTextField.snp.makeConstraints { make in
-            make.top.equalTo(lastnameProfileTextField.snp.bottom).offset(20)
+        heightProfileTextField.snp.makeConstraints { make in
+            make.top.equalTo(diagnoseProfileTextField.snp.bottom).offset(20)
             make.trailing.leading.equalToSuperview().inset(40)
             make.height.equalTo(40)
         }
-        phoneProfileTextField.snp.makeConstraints { make in
-            make.top.equalTo(emailProfileTextField.snp.bottom).offset(20)
+        weightProfileTextField.snp.makeConstraints { make in
+            make.top.equalTo(heightProfileTextField.snp.bottom).offset(20)
+            make.trailing.leading.equalToSuperview().inset(40)
+            make.height.equalTo(40)
+        }
+        dietProfileTextField.snp.makeConstraints { make in
+            make.top.equalTo(weightProfileTextField.snp.bottom).offset(20)
+            make.trailing.leading.equalToSuperview().inset(40)
+            make.height.equalTo(40)
+        }
+        schemeProfileTextField.snp.makeConstraints { make in
+            make.top.equalTo(dietProfileTextField.snp.bottom).offset(20)
             make.trailing.leading.equalToSuperview().inset(40)
             make.height.equalTo(40)
         }
         profileSaveButton.snp.makeConstraints { make in
-            make.top.equalTo(phoneProfileTextField.snp.bottom).offset(50)
+            make.top.equalTo(schemeProfileTextField.snp.bottom).offset(50)
             make.width.equalTo(150)
             make.centerX.equalToSuperview()
             make.height.equalTo(70)
@@ -107,7 +135,7 @@ class ProfileViewController: UIViewController {
     @objc func profileSave(){
         print("profile Tapped")
         
-        if (nameProfileTextField.text?.isEmpty ?? true) || (lastnameProfileTextField.text?.isEmpty ?? true) || (emailProfileTextField.text?.isEmpty ?? true) || (phoneProfileTextField.text?.isEmpty ?? true) {
+        if (nameProfileTextField.text?.isEmpty ?? true) || (diagnoseProfileTextField.text?.isEmpty ?? true) || (heightProfileTextField.text?.isEmpty ?? true) || (weightProfileTextField.text?.isEmpty ?? true) || (dietProfileTextField.text?.isEmpty ?? true) || (schemeProfileTextField.text?.isEmpty ?? true) {
             let alert = UIAlertController(title: "Empty fields!", message:"Please fill in all the fields",preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             present(alert, animated: true, completion: nil)
@@ -129,9 +157,11 @@ extension ProfileViewController {
             let uid = user.uid  // Get the user's UID from Firebase Authentication
             let newProfile = ProfileUserRequest(
                 profileName: nameProfileTextField.text ?? "",
-                profileLastName: lastnameProfileTextField.text ?? "",
-                profileEmail: emailProfileTextField.text ?? "",
-                profilePhone: phoneProfileTextField.text ?? ""
+                profileDiagnose: diagnoseProfileTextField.text ?? "",
+                profileHeight: heightProfileTextField.text ?? "",
+                profileWeight: weightProfileTextField.text ?? "",
+                profileDiet: dietProfileTextField.text ?? "",
+                profileScheme: schemeProfileTextField.text ?? ""
             )
 
             // Pass the UID as an additional parameter to the saveProfileData method
@@ -156,9 +186,11 @@ extension ProfileViewController {
             }
             DispatchQueue.main.async {
                 self?.nameProfileTextField.text = profile.profileName
-                self?.lastnameProfileTextField.text = profile.profileLastName
-                self?.emailProfileTextField.text = profile.profileEmail
-                self?.phoneProfileTextField.text = profile.profilePhone
+                self?.diagnoseProfileTextField.text = profile.profileDiagnose
+                self?.heightProfileTextField.text = profile.profileHeight
+                self?.weightProfileTextField.text = profile.profileWeight
+                self?.dietProfileTextField.text = profile.profileDiet
+                self?.schemeProfileTextField.text = profile.profileScheme
             }
         }
     }

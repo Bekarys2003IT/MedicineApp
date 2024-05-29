@@ -7,6 +7,7 @@
 import RealmSwift
 import UIKit
 import SnapKit
+import FirebaseFirestore
 protocol MedicineUpdateDelegate: AnyObject {
     func didUpdatePills()
 }
@@ -28,7 +29,6 @@ class MyPillsViewController: UIViewController {
     }()
     lazy var medicamentLabel:UILabel = {
        let label = UILabel()
-        label.text = "Медикаментов в аптечке: "
         label.font = .systemFont(ofSize: 16, weight: .heavy)
         label.textColor = .blue
         return label
@@ -118,6 +118,7 @@ class MyPillsViewController: UIViewController {
     @objc func tapPills(){
         print("Tap Pills")
         let addPillsVC = AddPillsViewController()
+            addPillsVC.selectedMedicine = selectedMedicine
             addPillsVC.onMedicineAdded = { [weak self] newPill in
                 guard let self = self, let medicine = self.selectedMedicine else { return }
                 let realm = try! Realm()
@@ -125,6 +126,27 @@ class MyPillsViewController: UIViewController {
                     realm.add(newPill)
                     medicine.pills.append(newPill)  // Add the pill to the specific medicine
                 }
+                let firebasePill = FirebasePill(
+                    name: newPill.name,
+                    expireDate: newPill.expireDate,
+                    purchasePrice: newPill.purchasePrice,
+                    notice: newPill.notice,
+                    iconName: newPill.iconName,
+                    illName: newPill.illName
+                )
+                if let firebaseMedicine = self.convertToFirebaseMedicine(realmMedicine: self.selectedMedicine) {
+                            firebaseMedicine.pills.append(firebasePill)
+                            MedicineService.shared.updateMedicineWithPills(medicine: firebaseMedicine) { error in
+                                if let error = error {
+                                    print("Error updating medicine with new pill: \(error)")
+                                } else {
+                                    print("Pill added successfully to Firestore!")
+                                }
+                            }
+                        }
+                
+//                saveFirestore(medicine: medicine)
+                self.updateMedicamentCount()
                 self.pills.append(newPill)
                 self.pillsTableView.reloadData()
             }
@@ -133,9 +155,32 @@ class MyPillsViewController: UIViewController {
             let navigationController = UINavigationController(rootViewController: addPillsVC)
             self.present(navigationController, animated: true, completion: nil)
         }
-   
+    func convertToFirebaseMedicine(realmMedicine: Medicine?) -> FirebaseMedicine? {
+        guard let realmMedicine = realmMedicine else { return nil }
+        let firebasePills = realmMedicine.pills.map { pill -> FirebasePill in
+            FirebasePill(
+                name: pill.name,
+                expireDate: pill.expireDate,
+                purchasePrice: pill.purchasePrice,
+                notice: pill.notice,
+                iconName: pill.iconName,
+                illName: pill.illName
+            )
+        }
+        return FirebaseMedicine(
+            type: realmMedicine.type,
+            medicament: realmMedicine.medicament,
+            iconName: realmMedicine.iconName,
+            pills: Array(firebasePills)  // Correct usage to convert a LazyMapSequence to Array
+        )
+    }
 
-   
+        private func updateMedicamentCount() {
+            medicamentLabel.text = "Медикаментов в аптечке: \(pills.count + 1)"
+        }
+       private func decreaseMedicamentCount() {
+        medicamentLabel.text = "Медикаментов в аптечке: \(pills.count - 1)"
+       }
 }
 extension MyPillsViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -152,6 +197,7 @@ extension MyPillsViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = pillsTableView.dequeueReusableCell(withIdentifier: "PillsTableViewCell", for: indexPath) as? PillsTableViewCell else {return UITableViewCell()}
         let pill = pills[indexPath.row]
+        cell.configure(with: pill)
         cell.nameLabel.text = pill.name
         cell.iconView.image = UIImage(systemName: "pills.circle")
         return cell
@@ -164,17 +210,29 @@ extension MyPillsViewController:UITableViewDelegate,UITableViewDataSource {
     //logic of delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            guard indexPath.row >= 0 && indexPath.row < pills.count else {
+                print("Invalid index for deletion: \(indexPath.row)")
+                return
+            }
             let pillToDelete = pills[indexPath.row]
             let realm = try! Realm()
             try! realm.write {
                 realm.delete(pillToDelete)
-                selectedMedicine?.pills.remove(at: indexPath.row)  // Assuming direct management of the list
+                if let medicine = selectedMedicine {
+                    if indexPath.row < medicine.pills.count {
+                        medicine.pills.remove(at: indexPath.row)
+                    } else {
+                        print("Invalid index for pill removal from selected medicine")
+                    }
+                } else {
+                    print("Selected medicine is nil")
+                }
             }
+            decreaseMedicamentCount()
             pills.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
     
 }
 

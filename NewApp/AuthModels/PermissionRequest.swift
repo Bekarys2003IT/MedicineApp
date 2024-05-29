@@ -6,3 +6,8 @@
 //
 
 import Foundation
+struct PermissionRequest {
+    let ownerEmail: String
+    let viewerEmail: String
+    let canViewDetails: Bool
+}

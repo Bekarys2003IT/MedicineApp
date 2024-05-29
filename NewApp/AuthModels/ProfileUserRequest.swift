@@ -8,16 +8,20 @@
 import Foundation
 struct ProfileUserRequest {
     let profileName:String
-    let profileLastName:String
-    let profileEmail:String
-    let profilePhone:String
+    let profileDiagnose:String
+    let profileHeight:String
+    let profileWeight:String
+    let profileDiet:String
+    let profileScheme:String
     
     var dictionary: [String: Any] {
            return [
                "profileName": profileName,
-               "profileLastName": profileLastName,
-               "profileEmail": profileEmail,
-               "profilePhone": profilePhone
+               "profileDiagnose": profileDiagnose,
+               "profileHeight": profileHeight,
+               "profileWeight": profileWeight,
+               "profileDiet": profileDiet,
+               "profileScheme": profileScheme
            ]
        }
 }

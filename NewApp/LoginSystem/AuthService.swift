@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import CryptoKit
 class Authservice{
     public static let shared = Authservice()
     
@@ -91,5 +92,4 @@ class Authservice{
             }
     }
     
-   
 }

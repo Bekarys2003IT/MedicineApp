@@ -36,6 +36,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         field.layer.borderColor = UIColor.black.cgColor
         return field
     }()
+    lazy var expireLabel:UILabel = {
+       let label = UILabel()
+        label.text = "Expire Date:"
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 16,weight: .bold)
+        return label
+    }()
     lazy var expireDatePicker:UIDatePicker = {
        let date = UIDatePicker()
         date.datePickerMode = .date
@@ -48,6 +55,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         field.borderStyle = .roundedRect
         field.layer.borderColor = UIColor.black.cgColor
         return field
+    }()
+    lazy var schemeLabel:UILabel = {
+       let label = UILabel()
+        label.text = "Description of the regimen:"
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 16,weight: .bold)
+        return label
     }()
     lazy var badButton:BadButton = {
         let button = BadButton()
@@ -71,7 +85,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     lazy var noticeTextField:UITextField = {
        let field = UITextField()
         field.placeholder = "Notice of pills"
-        field.keyboardType = .decimalPad
         field.borderStyle = .roundedRect
         field.layer.borderColor = UIColor.black.cgColor
         return field
@@ -112,7 +125,9 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
 //    }
     private func setUI(){
         view.addSubview(nameTextField)
+        view.addSubview(expireLabel)
         view.addSubview(expireDatePicker)
+        view.addSubview(schemeLabel)
         view.addSubview(purchasePriceTextField)
         view.addSubview(badButton)
         view.addSubview(noticeTextField)
@@ -129,26 +144,33 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
 //                    make.width.equalTo(scrollView)
 //        }
         nameTextField.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.centerX.equalToSuperview()
             make.height.equalTo(60)
             make.width.equalTo(350)
+        }
+        expireLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameTextField.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(25)
         }
         expireDatePicker.snp.makeConstraints { make in
-            make.top.equalTo(nameTextField.snp.bottom).offset(20)
+            make.top.equalTo(expireLabel.snp.bottom)
             make.centerX.equalToSuperview()
             make.height.equalTo(60)
             make.width.equalTo(350)
         }
-        
         purchasePriceTextField.snp.makeConstraints { make in
-            make.top.equalTo(expireDatePicker.snp.bottom).offset(20)
+            make.top.equalTo(expireDatePicker.snp.bottom).offset(5)
             make.centerX.equalToSuperview()
             make.height.equalTo(60)
             make.width.equalTo(350)
+        }
+        schemeLabel.snp.makeConstraints { make in
+            make.top.equalTo(purchasePriceTextField.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(25)
         }
         badButton.snp.makeConstraints { make in
-            make.top.equalTo(purchasePriceTextField.snp.bottom).offset(20)
+            make.top.equalTo(schemeLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
             make.height.equalTo(100)
             make.width.equalTo(350)
